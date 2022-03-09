@@ -1,7 +1,6 @@
 package br.com.zup.edu.fornecedormanager.model;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
