@@ -22,7 +22,10 @@ public class TelefoneDTO {
     }
 
     public Telefone paraTelefone(Fornecedor fornecedor) {
-        return new Telefone(ddd, numero, fornecedor);
+        String novoDdd = ddd.replaceAll("[^0-9]", "");
+        String novoNumero = numero.replaceAll("[^0-9]", "");
+
+        return new Telefone(novoDdd, novoNumero, fornecedor);
     }
 
     public String getDdd() {
