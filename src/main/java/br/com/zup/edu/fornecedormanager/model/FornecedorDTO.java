@@ -1,10 +1,9 @@
-package br.com.zup.edu.fornecedormanager.controller;
-
-import br.com.zup.edu.fornecedormanager.model.Fornecedor;
+package br.com.zup.edu.fornecedormanager.model;
 
 import javax.validation.constraints.NotBlank;
 
-public class FornecedorRequest {
+public class FornecedorDTO {
+
     @NotBlank
     private String nome;
 
@@ -14,17 +13,17 @@ public class FornecedorRequest {
     @NotBlank
     private String empresa;
 
-    public FornecedorRequest(String nome, String produto, String empresa) {
+    public FornecedorDTO() {}
+
+    public FornecedorDTO(@NotBlank String nome, @NotBlank String produto,
+                         @NotBlank String empresa) {
         this.nome = nome;
         this.produto = produto;
         this.empresa = empresa;
     }
 
-    public FornecedorRequest() {
-    }
-
-    public Fornecedor paraFornecedor(){
-        return new Fornecedor(nome,produto,empresa);
+    public Fornecedor paraFornecedor() {
+        return new Fornecedor(nome, produto, empresa);
     }
 
     public String getNome() {
@@ -38,4 +37,5 @@ public class FornecedorRequest {
     public String getEmpresa() {
         return empresa;
     }
+
 }

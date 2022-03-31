@@ -1,11 +1,20 @@
 package br.com.zup.edu.fornecedormanager.model;
 
-import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 @Entity
+@Table(name = "grupos_de_fornecedores")
 public class GrupoDeFornecedores {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -13,18 +22,17 @@ public class GrupoDeFornecedores {
     @Column(nullable = false)
     private String produto;
 
-
     @OneToMany
-    private List<Fornecedor> fornecedores= new ArrayList<>();
+    private List<Fornecedor> fornecedores = new ArrayList<>();
+
+    /**
+     * @deprecated Construtor de uso exclusivo do Hibernate
+     */
+    @Deprecated
+    public GrupoDeFornecedores() {}
 
     public GrupoDeFornecedores(String produto) {
         this.produto = produto;
     }
 
-    /**
-     * @deprecated  construtor para uso exclusivo do Hibernate
-     */
-    @Deprecated
-    public GrupoDeFornecedores() {
-    }
 }
