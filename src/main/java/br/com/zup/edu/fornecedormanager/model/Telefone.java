@@ -23,7 +23,7 @@ public class Telefone {
     private String numero;
 
     @ManyToOne(optional = false)
-    private Fornecedor fonecedor;
+    private Fornecedor fornecedor;
 
     /**
      * @deprecated Construtor de uso exclusivo do Hibernate
@@ -31,14 +31,17 @@ public class Telefone {
     @Deprecated
     public Telefone() {}
 
-    public Telefone(String ddd, String numero, Fornecedor fonecedor) {
+    public Telefone(String ddd, String numero) {
         this.ddd = ddd;
         this.numero = numero;
-        this.fonecedor = fonecedor;
     }
 
     public Long getId() {
         return id;
+    }
+
+    public void setFornecedor(Fornecedor fornecedor) {
+        this.fornecedor = fornecedor;
     }
 
 }

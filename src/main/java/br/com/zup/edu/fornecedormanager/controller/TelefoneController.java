@@ -46,12 +46,16 @@ public class TelefoneController {
                                                             "Não existe um fornecedor com o ID informado."
                                                         )
                                                     );
-        Telefone telefone = telefoneRepository.save(telefoneDTO.toModel(fornecedor));
+
+        Telefone telefone = telefoneDTO.toModel();
+        fornecedor.adicionar(telefone);
+        telefone = telefoneRepository.save(telefone);
+        fornecedorRepository.save(fornecedor);
 
         URI location = uriComponentsBuilder.path(
             FornecedorController.BASE_URI + "/{fornecedorId}" + TelefoneController.BASE_URI
                     + "/{id}"
-        ).buildAndExpand(fornecedor.getId(), telefone.getId()).toUri();
+        ).buildAndExpand(fornecedorId, telefone.getId()).toUri();
 
         return ResponseEntity.created(location).build();
     }
