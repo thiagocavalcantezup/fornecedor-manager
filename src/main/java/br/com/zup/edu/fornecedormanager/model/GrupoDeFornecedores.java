@@ -1,7 +1,7 @@
 package br.com.zup.edu.fornecedormanager.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +23,7 @@ public class GrupoDeFornecedores {
     private String produto;
 
     @OneToMany
-    private List<Fornecedor> fornecedores = new ArrayList<>();
+    private Set<Fornecedor> fornecedores = new HashSet<>();
 
     /**
      * @deprecated Construtor de uso exclusivo do Hibernate
@@ -33,6 +33,10 @@ public class GrupoDeFornecedores {
 
     public GrupoDeFornecedores(String produto) {
         this.produto = produto;
+    }
+
+    public void adicionar(Fornecedor fornecedor) {
+        fornecedores.add(fornecedor);
     }
 
 }
