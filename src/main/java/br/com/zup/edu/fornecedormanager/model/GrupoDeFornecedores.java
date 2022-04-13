@@ -3,6 +3,7 @@ package br.com.zup.edu.fornecedormanager.model;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class GrupoDeFornecedores {
     @Column(nullable = false)
     private String produto;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     private Set<Fornecedor> fornecedores = new HashSet<>();
 
     /**
