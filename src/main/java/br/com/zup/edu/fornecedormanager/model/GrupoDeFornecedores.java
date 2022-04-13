@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,6 +25,7 @@ public class GrupoDeFornecedores {
     private String produto;
 
     @OneToMany(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "grupo_de_fornecedores_id")
     private Set<Fornecedor> fornecedores = new HashSet<>();
 
     /**
@@ -38,6 +40,10 @@ public class GrupoDeFornecedores {
 
     public void adicionar(Fornecedor fornecedor) {
         fornecedores.add(fornecedor);
+    }
+
+    public Long getId() {
+        return id;
     }
 
 }
