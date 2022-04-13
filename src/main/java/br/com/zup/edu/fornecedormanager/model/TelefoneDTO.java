@@ -21,7 +21,7 @@ public class TelefoneDTO {
         this.numero = numero;
     }
 
-    public Telefone paraTelefone(Fornecedor fornecedor) {
+    public Telefone toModel(Fornecedor fornecedor) {
         String novoNumero = numero.replaceAll("[^0-9]", "");
 
         return new Telefone(ddd, novoNumero, fornecedor);

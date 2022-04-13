@@ -30,7 +30,7 @@ public class FornecedorController {
     @PostMapping
     public ResponseEntity<Void> create(@RequestBody @Valid FornecedorDTO request,
                                        UriComponentsBuilder uriComponentsBuilder) {
-        Fornecedor fornecedor = fornecedorRepository.save(request.paraFornecedor());
+        Fornecedor fornecedor = fornecedorRepository.save(request.toModel());
 
         URI location = uriComponentsBuilder.path(FornecedorController.BASE_URI + "/{id}")
                                            .buildAndExpand(fornecedor.getId())

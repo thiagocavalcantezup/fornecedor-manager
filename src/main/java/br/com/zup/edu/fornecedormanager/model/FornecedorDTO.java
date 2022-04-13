@@ -22,7 +22,7 @@ public class FornecedorDTO {
         this.empresa = empresa;
     }
 
-    public Fornecedor paraFornecedor() {
+    public Fornecedor toModel() {
         return new Fornecedor(nome, produto, empresa);
     }
 
