@@ -3,22 +3,15 @@ package br.com.zup.edu.fornecedormanager.exception;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.validation.ConstraintViolation;
 
 import org.springframework.validation.FieldError;
 
 public class ErroPadronizado {
 
-    @JsonProperty("codigo_http")
     private Integer codigoHttp;
-
-    @JsonProperty("mensagem_http")
     private String mensagemHttp;
-
-    @JsonProperty("mensagem_geral")
     private String mensagemGeral;
-
-    @JsonProperty("mensagens")
     private List<String> mensagens;
 
     public ErroPadronizado(Integer codigoHttp, String mensagemHttp, String mensagemGeral) {
@@ -32,8 +25,14 @@ public class ErroPadronizado {
         mensagens.add(fieldError.getField() + ": " + fieldError.getDefaultMessage());
     }
 
-    public void adicionarErro(String error) {
-        mensagens.add(error);
+    public void adicionarErro(ConstraintViolation<?> constraintViolation) {
+        mensagens.add(
+            constraintViolation.getPropertyPath() + ": " + constraintViolation.getMessage()
+        );
+    }
+
+    public void adicionarErro(String erro) {
+        mensagens.add(erro);
     }
 
     public Integer getCodigoHttp() {
