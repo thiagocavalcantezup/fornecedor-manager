@@ -46,4 +46,8 @@ public class Fornecedor {
     public List<Telefone> getTelefones() {
         return telefones;
     }
+
+    public void remover(Telefone telefone){
+        this.telefones.remove(telefone);
+    }
 }

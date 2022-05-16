@@ -24,7 +24,7 @@ public class Telefone {
     }
 
     /**
-     * @deprecated  construtor para uso exclusivo do Hibernate
+     * @deprecated construtor para uso exclusivo do Hibernate
      */
     @Deprecated
     public Telefone() {
@@ -32,5 +32,10 @@ public class Telefone {
 
     public Long getId() {
         return id;
+    }
+
+    public boolean pertence(Fornecedor fornecedor) {
+
+        return this.fornecedor.equals(fornecedor);
     }
 }
